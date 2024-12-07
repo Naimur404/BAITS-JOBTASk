@@ -20,7 +20,7 @@ class ProductController extends Controller
             $query->where('name', 'LIKE', "%{$search}%");
         }
 
-        $products = $query->paginate(5);
+        $products = $query->orderBy('id', 'desc')->paginate(5);
 
         return view('index', compact('products', 'search'));
     }
